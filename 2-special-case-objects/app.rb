@@ -2,13 +2,25 @@ require './setup'
 
 class User
   def last_subscription
-    subscriptions.last
+    subscriptions.last || NullUser.new
   end
 
   def cancel_subscription
-    if last_subscription
-      last_subscription.cancel
-    end
+    last_subscription.cancel
+  end
+end
+
+class NullUser
+  def name
+    'none'
+  end
+  def status
+    '-'
+  end
+  def trial_days
+    '-'
+  end
+  def cancel
   end
 end
 
