@@ -1,3 +1,6 @@
+This is a workshop that was pair-coded at RailsConf2014.
+________________________________________________________
+
 # Refactoring Workshop
 
 Requirements: Ruby >1.9.3, git, `minitest` gem.

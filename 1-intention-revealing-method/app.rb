@@ -2,8 +2,7 @@ require './setup'
 
 class ProjectsController
   def index
-    # When user is admitted at least a week ago we show it's active projects
-    if current_user && current_user.created_at < (Time.now - 7*24*3600)
+    if user_created_week_ago?
       @projects = current_user.active_projects
 
     # If not admitted we show some featured projects, and set a marketing flash
@@ -14,6 +13,11 @@ class ProjectsController
       end
       @projects = Project.featured
     end
+  end
+
+  private
+  def user_created_week_ago?
+    current_user && current_user.created_at < (Time.now - 7*24*3600)
   end
 end
 
